@@ -66,5 +66,10 @@ public class Customer {
             System.out.println("Flights booked by " + username + ": " + bookedFlights);
         }
     }
+    @Override
+    public String toString() {
+        return "Customer: " + firstname + " " + lastname + " | Username: " + username + " | Email: " + email;
+    }
+
 
 }
