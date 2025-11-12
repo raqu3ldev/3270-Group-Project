@@ -1,4 +1,4 @@
-package org.example;
+package cis3270;
 
 import java.util.ArrayList;
 
@@ -18,10 +18,10 @@ public class Customer {
 
     public Customer(String firstName, String lastName, String address, String zipcode, String state,
                     String username, String password, String email, String ssn,
-                    String securityQuestion, String securityAnswer){
+                    String securityQuestion, String securityAnswer) {
         this.firstname = firstName;
         this.lastname = lastName;
-        this.address= address;
+        this.address = address;
         this.zipcode = zipcode;
         this.state = state;
         this.username = username;
@@ -29,7 +29,7 @@ public class Customer {
         this.email = email;
         this.ssn = ssn;
         this.securityQuestion = securityQuestion;
-        this.securityAnswer =  securityAnswer;
+        this.securityAnswer = securityAnswer;
     }
 
     public String getUsername() {
@@ -39,7 +39,10 @@ public class Customer {
     public String getPassword() {
         return password;
     }
-    public ArrayList<String> getBookedFlights() {return bookedFlights;}
+
+    public ArrayList<String> getBookedFlights() {
+        return bookedFlights;
+    }
 
     public void bookFlight(String flight) {
         if (!bookedFlights.contains(flight)) {
@@ -49,27 +52,26 @@ public class Customer {
             System.out.println("You already booked this flight.");
         }
     }
-        public void cancelFlight (String flight){
-        if(bookedFlights.contains(flight)){
+
+    public void cancelFlight(String flight) {
+        if (bookedFlights.contains(flight)) {
             bookedFlights.remove(flight);
             System.out.println("Flight " + flight + " successfully cancelled.");
-        }
-        else {
+        } else {
             System.out.println("You have not booked this flight yet.");
         }
     }
-    public void displayBookedFlight(){
+
+    public void displayBookedFlight() {
         if (bookedFlights.isEmpty()) {
             System.out.println("You have no currently booked.");
-        }
-        else {
+        } else {
             System.out.println("Flights booked by " + username + ": " + bookedFlights);
         }
     }
+
     @Override
     public String toString() {
         return "Customer: " + firstname + " " + lastname + " | Username: " + username + " | Email: " + email;
     }
-
-
 }
