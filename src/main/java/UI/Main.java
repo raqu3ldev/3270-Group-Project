@@ -12,8 +12,8 @@ public class Main extends Application {
         primaryStage.setTitle("Airline Reservation System");
 
         // Show splash screen first
-        SplashScreen splashScreen = new SplashScreen(primaryStage);
-        splashScreen.show();
+       // SplashScreen splashScreen = new SplashScreen(primaryStage);
+       // splashScreen.show();
     }
 
     public static void main(String[] args) {
