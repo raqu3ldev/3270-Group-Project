@@ -13,7 +13,7 @@
 <VBox spacing="20" alignment="CENTER"
       xmlns="http://javafx.com/javafx/21"
       xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="UI.LoginScreen">
+      fx:controller="UI.LoginScreenController">
 
     <padding>
         <Insets top="20" right="20" bottom="20" left="20"/>

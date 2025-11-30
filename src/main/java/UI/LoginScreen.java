@@ -11,7 +11,7 @@ public class LoginScreen extends Application {
     public void start(Stage primaryStage) throws Exception {
         primaryStage.setTitle("Airline System Login");
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("loginScreen.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/loginScreen.fxml"));
         Scene scene = new Scene(loader.load(), 400, 300);
 
         primaryStage.setScene(scene);
