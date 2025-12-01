@@ -12,9 +12,7 @@ public class DBConnection {
 
     private static Connection connection = null;
 
-    /**
-     * Get database connection (Singleton pattern)
-     */
+   //Gets DB connection
     public static Connection getConnection() {
         try {
             if (connection == null || connection.isClosed()) {
@@ -37,9 +35,7 @@ public class DBConnection {
         }
     }
 
-    /**
-     * Close database connection
-     */
+    //Close connections
     public static void closeConnection() {
         try {
             if (connection != null && !connection.isClosed()) {
@@ -51,9 +47,7 @@ public class DBConnection {
         }
     }
 
-    /**
-     * Test the database connection
-     */
+    //Tests database connections
     public static boolean testConnection() {
         try {
             Connection conn = getConnection();

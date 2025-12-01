@@ -72,9 +72,7 @@ public class FlightDAO {
         }
     }
 
-    /**
-     * Get flight by ID
-     */
+    //Gets flight by ID
     public Flight getFlightById(int flightId) throws SQLException {
         String query = "SELECT * FROM flights WHERE flight_id = ?";
 
@@ -92,9 +90,7 @@ public class FlightDAO {
         }
     }
 
-    /**
-     * Add a new flight
-     */
+    //Adds Flight
     public boolean addFlight(Flight flight) throws SQLException {
         String query = "INSERT INTO flights (flight_number, from_city, to_city, " +
                 "departure_time, arrival_time, total_seats, available_seats, price) " +
@@ -117,9 +113,7 @@ public class FlightDAO {
         }
     }
 
-    /**
-     * Update a flight
-     */
+    //UpdateFlight
     public boolean updateFlight(Flight flight) throws SQLException {
         String query = "UPDATE flights SET flight_number = ?, from_city = ?, to_city = ?, " +
                 "departure_time = ?, arrival_time = ?, total_seats = ?, " +
@@ -143,9 +137,7 @@ public class FlightDAO {
         }
     }
 
-    /**
-     * Delete a flight
-     */
+    //Deletes flights
     public boolean deleteFlight(int flightId) throws SQLException {
         String query = "DELETE FROM flights WHERE flight_id = ?";
 
@@ -159,9 +151,7 @@ public class FlightDAO {
         }
     }
 
-    /**
-     * Decrement available seats (when booking)
-     */
+    //Decrements available seating
     public boolean decrementAvailableSeats(int flightId) throws SQLException {
         String query = "UPDATE flights SET available_seats = available_seats - 1 " +
                 "WHERE flight_id = ? AND available_seats > 0";
@@ -176,9 +166,7 @@ public class FlightDAO {
         }
     }
 
-    /**
-     * Increment available seats (when canceling booking)
-     */
+    //Increments Available Seats
     public boolean incrementAvailableSeats(int flightId) throws SQLException {
         String query = "UPDATE flights SET available_seats = available_seats + 1 " +
                 "WHERE flight_id = ?";
@@ -193,9 +181,7 @@ public class FlightDAO {
         }
     }
 
-    /**
-     * Helper method to extract Flight object from ResultSet
-     */
+    //Extracts Flights from result set
     private Flight extractFlightFromResultSet(ResultSet rs) throws SQLException {
         Flight flight = new Flight();
         flight.setFlightId(rs.getInt("flight_id"));

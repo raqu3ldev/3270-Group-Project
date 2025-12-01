@@ -7,9 +7,9 @@ import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 public class BookingDAO {
-    /**
-     * Create a new booking
-     */
+
+
+    //creates bookings
     public boolean createBooking(int userId, int flightId) throws SQLException {
         String query = "INSERT INTO bookings (user_id, flight_id, status) VALUES (?, ?, 'CONFIRMED')";
 
@@ -27,10 +27,7 @@ public class BookingDAO {
         }
     }
 
-    /**
-     * Check if user has a booking conflict
-     * Conflict = already booked this flight OR time overlap with another booking
-     */
+    //checks booking conflicts
     public boolean hasBookingConflict(int userId, Flight newFlight) throws SQLException {
         String query = "SELECT b.*, f.departure_time, f.arrival_time " +
                 "FROM bookings b " +
@@ -52,9 +49,7 @@ public class BookingDAO {
         }
     }
 
-    /**
-     * Cancel a booking
-     */
+    //cancels bookings
     public boolean cancelBooking(int bookingId) throws SQLException {
         String query = "UPDATE bookings SET status = 'CANCELLED' WHERE booking_id = ?";
 
@@ -68,9 +63,7 @@ public class BookingDAO {
         }
     }
 
-    /**
-     * Get all bookings for a user
-     */
+    //Gets all user bookings
     public List<Booking> getUserBookings(int userId) throws SQLException {
         String query = "SELECT b.*, f.flight_number, f.from_city, f.to_city, f.departure_time " +
                 "FROM bookings b " +
@@ -94,9 +87,7 @@ public class BookingDAO {
         }
     }
 
-    /**
-     * Get all bookings (Admin view)
-     */
+    //Gets all booking for Admin User
     public List<Booking> getAllBookings() throws SQLException {
         String query = "SELECT b.*, f.flight_number, f.from_city, f.to_city, f.departure_time, " +
                 "u.first_name, u.last_name " +
@@ -119,9 +110,7 @@ public class BookingDAO {
         }
     }
 
-    /**
-     * Get booking by ID
-     */
+    //Gets booking by ID
     public Booking getBookingById(int bookingId) throws SQLException {
         String query = "SELECT b.*, f.flight_number, f.from_city, f.to_city, f.departure_time " +
                 "FROM bookings b " +
@@ -142,9 +131,7 @@ public class BookingDAO {
         }
     }
 
-    /**
-     * Helper method to extract Booking object from ResultSet
-     */
+    //Extracts bookings
     private Booking extractBookingFromResultSet(ResultSet rs) throws SQLException {
         Booking booking = new Booking();
         booking.setBookingId(rs.getInt("booking_id"));
