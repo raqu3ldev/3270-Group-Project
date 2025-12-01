@@ -4,7 +4,7 @@ import Model.User;
 import java.sql.*;
 
 public class UserDAO {
-    //verifies user login
+    //verifies user loginn
     public User authenticateUser(String username, String password) throws SQLException {
         String query = "SELECT * FROM users WHERE username = ? AND password = ?";
 
