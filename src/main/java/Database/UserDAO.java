@@ -4,9 +4,7 @@ import Model.User;
 import java.sql.*;
 
 public class UserDAO {
-    /**
-     * Authenticate user (login)
-     */
+    //verifies user login
     public User authenticateUser(String username, String password) throws SQLException {
         String query = "SELECT * FROM users WHERE username = ? AND password = ?";
 
@@ -26,9 +24,7 @@ public class UserDAO {
         }
     }
 
-    /**
-     * Create a new user (registration)
-     */
+    //create new user
     public boolean createUser(User user) throws SQLException {
         String query = "INSERT INTO users (first_name, last_name, address, zip, state, " +
                 "username, password, email, ssn, security_question, security_answer, is_admin) " +
@@ -55,9 +51,7 @@ public class UserDAO {
         }
     }
 
-    /**
-     * Check if username already exists
-     */
+    //checks for existing user
     public boolean usernameExists(String username) throws SQLException {
         String query = "SELECT COUNT(*) FROM users WHERE username = ?";
 
@@ -75,9 +69,7 @@ public class UserDAO {
         }
     }
 
-    /**
-     * Get user by username
-     */
+    //get user by name
     public User getUserByUsername(String username) throws SQLException {
         String query = "SELECT * FROM users WHERE username = ?";
 
@@ -95,9 +87,7 @@ public class UserDAO {
         }
     }
 
-    /**
-     * Recover password using security question
-     */
+    //recover password method
     public String recoverPassword(String username, String securityAnswer) throws SQLException {
         String query = "SELECT password FROM users WHERE username = ? AND security_answer = ?";
 
@@ -117,9 +107,7 @@ public class UserDAO {
         }
     }
 
-    /**
-     * Helper method to extract User object from ResultSet
-     */
+    //gets user information
     private User extractUserFromResultSet(ResultSet rs) throws SQLException {
         User user = new User();
         user.setUserId(rs.getInt("user_id"));
