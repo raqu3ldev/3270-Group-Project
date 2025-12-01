@@ -1,24 +1,26 @@
 package UI;
 
-import javafx.application.Application;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
 
-public class LoginScreen extends Application {
+import java.io.IOException;
 
-    @Override
-    public void start(Stage primaryStage) throws Exception {
-        primaryStage.setTitle("Airline System Login");
+public class LoginScreen {
+
+    private Stage stage;
+
+    public LoginScreen(Stage stage) {
+        this.stage = stage;
+    }
+
+    public void show() throws IOException {
+        stage.setTitle("Airline System Login");
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/loginScreen.fxml"));
         Scene scene = new Scene(loader.load(), 400, 300);
 
-        primaryStage.setScene(scene);
-        primaryStage.show();
-    }
-
-    public static void main(String[] args) {
-        launch(args);
+        stage.setScene(scene);
+        stage.show();
     }
 }
