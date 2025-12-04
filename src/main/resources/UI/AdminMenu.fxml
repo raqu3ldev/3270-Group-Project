@@ -1,28 +1,24 @@
 <?xml version="1.0" encoding="UTF-8"?>
 
 <?import javafx.geometry.Insets?>
-<?import javafx.geometry.Pos?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
 <?import javafx.scene.layout.VBox?>
 
-<VBox spacing="15" alignment="CENTER"
-      xmlns="http://javafx.com/javafx/21"
-      xmlns:fx="http://javafx.com/fxml/1"
-      fx:controller="UI.AdminMenuController">
+<VBox alignment="CENTER" prefHeight="338.0" prefWidth="467.0" spacing="15" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AdminMenuController">
 
     <padding>
-        <Insets top="20" right="20" bottom="20" left="20"/>
+        <Insets bottom="20" left="20" right="20" top="20" />
     </padding>
 
-    <Label text="Admin Menu" style="-fx-font-size: 24px; -fx-font-weight: bold;"/>
+    <Label style="-fx-font-size: 24px; -fx-font-weight: bold;" text="Admin Menu" />
 
-    <Label fx:id="welcomeLabel" text="Welcome, Admin"/>
+    <Label fx:id="welcomeLabel" text="Welcome, Admin" />
 
-    <Button fx:id="manageFlightsButton" text="Manage Flights"/>
-    <Button fx:id="searchFlightsButton" text="Search Flights"/>
-    <Button fx:id="viewBookingsButton" text="View All Bookings"/>
-    <Button fx:id="viewCustomersButton" text="View Customers"/>
-    <Button fx:id="logoutButton" text="Logout"/>
+    <Button fx:id="manageFlightsButton" text="Manage Flights" />
+    <Button fx:id="searchFlightsButton" text="Search Flights" />
+    <Button fx:id="viewBookingsButton" text="View All Bookings" />
+    <Button fx:id="viewCustomersButton" text="View Customers" />
+    <Button fx:id="logoutButton" text="Logout" />
 
 </VBox>

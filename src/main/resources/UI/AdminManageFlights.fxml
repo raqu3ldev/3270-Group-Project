@@ -1,0 +1,39 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+   <top>
+      <Label prefHeight="30.0" prefWidth="588.0" text="All Bookings" BorderPane.alignment="CENTER">
+         <font>
+            <Font size="19.0" />
+         </font>
+      </Label>
+   </top>
+   <center>
+      <TableView prefHeight="336.0" prefWidth="765.0" BorderPane.alignment="CENTER">
+        <columns>
+          <TableColumn prefWidth="107.0" text="Customer" />
+          <TableColumn prefWidth="123.0" text="Flight#" />
+            <TableColumn prefWidth="129.0" text="From" />
+            <TableColumn prefWidth="121.0" text="To" />
+            <TableColumn prefWidth="142.0" text="Date" />
+            <TableColumn prefWidth="161.0" text="Time" />
+            <TableColumn prefWidth="137.0" text="Booked On" />
+        </columns>
+      </TableView>
+   </center>
+   <bottom>
+      <HBox prefHeight="48.0" prefWidth="669.0" spacing="8.0" BorderPane.alignment="CENTER">
+         <children>
+            <Button mnemonicParsing="false" text="Add Flight" />
+            <Button lineSpacing="8.0" mnemonicParsing="false" text="Update Flight" />
+            <Button mnemonicParsing="false" text="Delete Flight" />
+            <Pane prefHeight="20.0" prefWidth="324.0" HBox.hgrow="ALWAYS" />
+            <Button mnemonicParsing="false" text="Back to Menu" />
+         </children>
+      </HBox>
+   </bottom>
+</BorderPane>

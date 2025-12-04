@@ -1,0 +1,31 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.scene.control.*?>
+<?import javafx.scene.layout.*?>
+<?import javafx.scene.text.*?>
+
+<VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="463.0" prefWidth="728.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <Label text="My Bookings">
+         <font>
+            <Font size="18.0" />
+         </font>
+      </Label>
+      <TableView prefHeight="200.0" prefWidth="200.0">
+        <columns>
+          <TableColumn prefWidth="136.0" text="Booking #" />
+          <TableColumn prefWidth="142.0" text="Origin" />
+            <TableColumn prefWidth="142.0" text="Destination" />
+            <TableColumn prefWidth="141.0" text="Date" />
+            <TableColumn prefWidth="165.0" text="Booking Date" />
+        </columns>
+      </TableView>
+      <HBox prefHeight="100.0" prefWidth="200.0">
+         <children>
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="143.0" text="Back to Menu" />
+            <HBox prefHeight="113.0" prefWidth="484.0" />
+            <Button mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Cancel Booking" />
+         </children>
+      </HBox>
+   </children>
+</VBox>
