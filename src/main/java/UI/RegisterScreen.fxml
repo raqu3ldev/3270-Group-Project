@@ -1,0 +1,32 @@
+<?xml version="1.0" encoding="UTF-8"?>
+
+<?import javafx.geometry.Insets?>
+<?import javafx.scene.control.Label?>
+<?import javafx.scene.control.TextField?>
+<?import javafx.scene.layout.AnchorPane?>
+<?import javafx.scene.layout.VBox?>
+
+
+<AnchorPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="467.0" prefWidth="639.0" xmlns="http://javafx.com/javafx/25" xmlns:fx="http://javafx.com/fxml/1">
+   <children>
+      <VBox layoutX="43.0" layoutY="10.0" prefHeight="458.0" prefWidth="563.0" spacing="10.0">
+         <padding>
+            <Insets bottom="20.0" left="20.0" right="20.0" top="20.0" />
+         </padding>
+         <children>
+            <Label prefHeight="14.0" prefWidth="126.0" text="First Name" textAlignment="CENTER" />
+            <TextField prefHeight="0.0" prefWidth="284.0" />
+            <Label text="Last Name" />
+            <TextField />
+            <Label text="Email" />
+            <TextField />
+            <Label text="Username" />
+            <TextField />
+            <Label text="Password" />
+            <TextField />
+            <Label text="Confirm Password" />
+            <TextField />
+         </children>
+      </VBox>
+   </children>
+</AnchorPane>
