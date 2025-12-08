@@ -4,36 +4,35 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <Label prefHeight="30.0" prefWidth="588.0" text="All Bookings" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
-   </top>
-   <center>
-      <TableView prefHeight="336.0" prefWidth="765.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn prefWidth="107.0" text="Customer" />
-          <TableColumn prefWidth="123.0" text="Flight#" />
-            <TableColumn prefWidth="129.0" text="From" />
-            <TableColumn prefWidth="121.0" text="To" />
-            <TableColumn prefWidth="142.0" text="Date" />
-            <TableColumn prefWidth="161.0" text="Time" />
-            <TableColumn prefWidth="137.0" text="Booked On" />
-        </columns>
-      </TableView>
-   </center>
-   <bottom>
-      <HBox prefHeight="48.0" prefWidth="669.0" spacing="8.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" text="Add Flight" />
-            <Button lineSpacing="8.0" mnemonicParsing="false" text="Update Flight" />
-            <Button mnemonicParsing="false" text="Delete Flight" />
-            <Pane prefHeight="20.0" prefWidth="324.0" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" text="Back to Menu" />
-         </children>
-      </HBox>
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AdminManageFlightsController">
+    <top>
+        <Label prefHeight="30.0" prefWidth="588.0" text="Manage Flights" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Label>
+    </top>
+    <center>
+        <TableView fx:id="flightsTable" prefHeight="336.0" prefWidth="765.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="flightNumberCol" prefWidth="107.0" text="Flight#" />
+                <TableColumn fx:id="fromCityCol" prefWidth="123.0" text="From" />
+                <TableColumn fx:id="toCityCol" prefWidth="129.0" text="To" />
+                <TableColumn fx:id="departureCol" prefWidth="121.0" text="Departure" />
+                <TableColumn fx:id="seatsCol" prefWidth="142.0" text="Seats" />
+                <TableColumn fx:id="priceCol" prefWidth="147.0" text="Price" />
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox prefHeight="48.0" prefWidth="669.0" spacing="8.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="addButton" mnemonicParsing="false" text="Add Flight" />
+                <Button fx:id="updateButton" lineSpacing="8.0" mnemonicParsing="false" text="Update Flight" />
+                <Button fx:id="deleteButton" mnemonicParsing="false" text="Delete Flight" />
+                <Pane prefHeight="20.0" prefWidth="324.0" HBox.hgrow="ALWAYS" />
+                <Button fx:id="backButton" mnemonicParsing="false" text="Back to Menu" />
+            </children>
+        </HBox>
+    </bottom>
 </BorderPane>
