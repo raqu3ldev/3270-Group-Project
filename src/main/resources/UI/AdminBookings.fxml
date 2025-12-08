@@ -4,33 +4,33 @@
 <?import javafx.scene.layout.*?>
 <?import javafx.scene.text.*?>
 
-<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1">
-   <top>
-      <Label prefHeight="30.0" prefWidth="588.0" text="All Bookings" BorderPane.alignment="CENTER">
-         <font>
-            <Font size="19.0" />
-         </font>
-      </Label>
-   </top>
-   <center>
-      <TableView prefHeight="336.0" prefWidth="765.0" BorderPane.alignment="CENTER">
-        <columns>
-          <TableColumn prefWidth="107.0" text="Customer ID" />
-          <TableColumn prefWidth="104.0" text="Booking ID" />
-            <TableColumn prefWidth="119.0" text="From" />
-            <TableColumn prefWidth="129.0" text="To" />
-            <TableColumn prefWidth="152.0" text="Date" />
-            <TableColumn prefWidth="157.0" text="Booked On" />
-        </columns>
-      </TableView>
-   </center>
-   <bottom>
-      <HBox prefHeight="48.0" prefWidth="669.0" spacing="8.0" BorderPane.alignment="CENTER">
-         <children>
-            <Button mnemonicParsing="false" />
-            <Pane prefHeight="20.0" prefWidth="324.0" HBox.hgrow="ALWAYS" />
-            <Button mnemonicParsing="false" text="Back to Menu" />
-         </children>
-      </HBox>
-   </bottom>
+<BorderPane maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity" prefHeight="414.0" prefWidth="769.0" xmlns="http://javafx.com/javafx/17.0.12" xmlns:fx="http://javafx.com/fxml/1" fx:controller="UI.AdminBookingsController">
+    <top>
+        <Label prefHeight="30.0" prefWidth="588.0" text="All Bookings" BorderPane.alignment="CENTER">
+            <font>
+                <Font size="19.0" />
+            </font>
+        </Label>
+    </top>
+    <center>
+        <TableView fx:id="bookingsTable" prefHeight="336.0" prefWidth="765.0" BorderPane.alignment="CENTER">
+            <columns>
+                <TableColumn fx:id="customerIdCol" prefWidth="107.0" text="Customer ID" />
+                <TableColumn fx:id="bookingIdCol" prefWidth="104.0" text="Booking ID" />
+                <TableColumn fx:id="fromCol" prefWidth="119.0" text="From" />
+                <TableColumn fx:id="toCol" prefWidth="129.0" text="To" />
+                <TableColumn fx:id="dateCol" prefWidth="152.0" text="Date" />
+                <TableColumn fx:id="bookedOnCol" prefWidth="157.0" text="Booked On" />
+            </columns>
+        </TableView>
+    </center>
+    <bottom>
+        <HBox prefHeight="48.0" prefWidth="669.0" spacing="8.0" BorderPane.alignment="CENTER">
+            <children>
+                <Button fx:id="refreshButton" mnemonicParsing="false" text="Refresh" />
+                <Pane prefHeight="20.0" prefWidth="324.0" HBox.hgrow="ALWAYS" />
+                <Button fx:id="backButton" mnemonicParsing="false" text="Back to Menu" />
+            </children>
+        </HBox>
+    </bottom>
 </BorderPane>

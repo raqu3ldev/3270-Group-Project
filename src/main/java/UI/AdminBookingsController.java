@@ -1,6 +1,5 @@
 package UI;
 
-import Model.User;
 import Model.Booking;
 import Service.BookingService;
 import javafx.fxml.FXML;
@@ -17,19 +16,22 @@ public class AdminBookingsController {
     private TableView<Booking> bookingsTable;
 
     @FXML
-    private TableColumn<Booking, String> flightNumberCol;
+    private TableColumn<Booking, Integer> customerIdCol;
 
     @FXML
-    private TableColumn<Booking, String> fromCityCol;
+    private TableColumn<Booking, Integer> bookingIdCol;
 
     @FXML
-    private TableColumn<Booking, String> toCityCol;
+    private TableColumn<Booking, String> fromCol;
 
     @FXML
-    private TableColumn<Booking, String> departureCol;
+    private TableColumn<Booking, String> toCol;
 
     @FXML
-    private TableColumn<Booking, String> statusCol;
+    private TableColumn<Booking, String> dateCol;
+
+    @FXML
+    private TableColumn<Booking, String> bookedOnCol;
 
     @FXML
     private Button refreshButton;
@@ -37,8 +39,6 @@ public class AdminBookingsController {
     @FXML
     private Button backButton;
 
-    private User user;
-    private Stage stage;
     private BookingService bookingService;
     private ObservableList<Booking> bookingsList;
 
@@ -52,20 +52,13 @@ public class AdminBookingsController {
         loadBookings();
     }
 
-    public void setUser(User user) {
-        this.user = user;
-    }
-
-    public void setStage(Stage stage) {
-        this.stage = stage;
-    }
-
     private void setupTable() {
-        flightNumberCol.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
-        fromCityCol.setCellValueFactory(new PropertyValueFactory<>("fromCity"));
-        toCityCol.setCellValueFactory(new PropertyValueFactory<>("toCity"));
-        departureCol.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
-        statusCol.setCellValueFactory(new PropertyValueFactory<>("status"));
+        customerIdCol.setCellValueFactory(new PropertyValueFactory<>("userId"));
+        bookingIdCol.setCellValueFactory(new PropertyValueFactory<>("bookingId"));
+        fromCol.setCellValueFactory(new PropertyValueFactory<>("fromCity"));
+        toCol.setCellValueFactory(new PropertyValueFactory<>("toCity"));
+        dateCol.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+        bookedOnCol.setCellValueFactory(new PropertyValueFactory<>("bookingDate"));
 
         bookingsTable.setItems(bookingsList);
     }
@@ -87,7 +80,8 @@ public class AdminBookingsController {
 
     private void goBack() {
         try {
-            AdminMenu adminMenu = new AdminMenu(stage, user);
+            Stage stage = (Stage) backButton.getScene().getWindow();
+            AdminMenu adminMenu = new AdminMenu(stage);
             adminMenu.show();
         } catch (Exception ex) {
             showError("Error going back: " + ex.getMessage());
