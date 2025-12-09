@@ -101,7 +101,6 @@ public class CustomerFlightSearchController {
         LocalDate date = datePicker.getValue();
 
         try {
-            // Search for flights (empty fields will return all flights)
             List<Flight> flights = flightService.searchFlights(from, to, date);
             flightsList.clear();
             flightsList.addAll(flights);
@@ -132,27 +131,24 @@ public class CustomerFlightSearchController {
         }
 
         try {
-            // Check if flight is full
             if (selectedFlight.isFull()) {
                 showAlert(Alert.AlertType.ERROR, "Flight Full",
                         "This flight is fully booked.");
                 return;
             }
 
-            // Check for conflicts
             if (bookingService.hasBookingConflict(user.getUserId(), selectedFlight)) {
                 showAlert(Alert.AlertType.ERROR, "Booking Conflict",
                         "You already have a booking for this flight or a conflicting flight at the same time.");
                 return;
             }
 
-            // Book the flight
             boolean success = bookingService.bookFlight(user.getUserId(), selectedFlight.getFlightId());
 
             if (success) {
                 showAlert(Alert.AlertType.INFORMATION, "Success",
                         "Flight booked successfully!");
-                handleSearch(); // Refresh the list
+                handleSearch();
             } else {
                 showAlert(Alert.AlertType.ERROR, "Error",
                         "Failed to book flight. Please try again.");
