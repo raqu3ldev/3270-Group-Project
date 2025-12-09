@@ -169,6 +169,15 @@ public class User {
         this.role = role;
     }
 
+    public void setAdmin(boolean admin){
+        this.role = admin ? "ADMIN" : "CUSTOMER";
+    }
+
+    public boolean isAdmin(){
+        return "ADMIN".equals(role);
+    }
+
+
     @Override
     public String toString() {
         return "User{" +

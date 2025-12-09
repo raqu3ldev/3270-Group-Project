@@ -44,15 +44,15 @@ public class UserService {
             user.setFirstName(firstName);
             user.setLastName(lastName);
             user.setAddress(address);
-            user.setZip(zip);
+            user.setZipCode(zip);
             user.setState(state);
             user.setUsername(username);
-            user.setPassword(password); // In production, hash this!
+            user.setPassword(password);
             user.setEmail(email);
             user.setSsn(ssn);
             user.setSecurityQuestion(securityQuestion);
             user.setSecurityAnswer(securityAnswer);
-            user.setAdmin(false); // Default to customer
+            user.setAdmin(false);
 
             return userDAO.createUser(user);
         } catch (Exception e) {

@@ -104,7 +104,7 @@ public class FlightDAO {
             stmt.setString(3, flight.getToCity());
             stmt.setTimestamp(4, Timestamp.valueOf(flight.getDepartureTime()));
             stmt.setTimestamp(5, Timestamp.valueOf(flight.getArrivalTime()));
-            stmt.setInt(6, flight.getTotalSeats());
+            stmt.setInt(6, flight.getCapacity());
             stmt.setInt(7, flight.getAvailableSeats());
             stmt.setDouble(8, flight.getPrice());
 
@@ -127,7 +127,7 @@ public class FlightDAO {
             stmt.setString(3, flight.getToCity());
             stmt.setTimestamp(4, Timestamp.valueOf(flight.getDepartureTime()));
             stmt.setTimestamp(5, Timestamp.valueOf(flight.getArrivalTime()));
-            stmt.setInt(6, flight.getTotalSeats());
+            stmt.setInt(6, flight.getCapacity());
             stmt.setInt(7, flight.getAvailableSeats());
             stmt.setDouble(8, flight.getPrice());
             stmt.setInt(9, flight.getFlightId());
@@ -195,9 +195,9 @@ public class FlightDAO {
         flight.setDepartureTime(departure != null ? departure.toLocalDateTime() : null);
         flight.setArrivalTime(arrival != null ? arrival.toLocalDateTime() : null);
 
-        flight.setTotalSeats(rs.getInt("total_seats"));
+        flight.setCapacity(rs.getInt("total_seats"));
         flight.setAvailableSeats(rs.getInt("available_seats"));
-        flight.setPrice(rs.getDouble("price"));
+        flight.setBasePrice(rs.getDouble("price"));
 
         return flight;
     }
