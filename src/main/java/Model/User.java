@@ -169,14 +169,13 @@ public class User {
         this.role = role;
     }
 
-    public void setAdmin(boolean admin){
-        this.role = admin ? "ADMIN" : "CUSTOMER";
+    public void setZip(String zipCode) {
+        this.zipCode = zipCode;
     }
 
-    public boolean isAdmin(){
-        return "ADMIN".equals(role);
+    public void setAdmin(boolean isAdmin) {
+        this.role = isAdmin ? "ADMIN" : "CUSTOMER";
     }
-
 
     @Override
     public String toString() {
@@ -187,3 +186,4 @@ public class User {
                 '}';
     }
 }
+

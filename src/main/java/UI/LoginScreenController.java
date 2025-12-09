@@ -3,7 +3,10 @@ package UI;
 import Model.User;
 import Service.UserService;
 import javafx.fxml.FXML;
-import javafx.scene.control.*;
+import javafx.scene.control.Alert;
+import javafx.scene.control.Button;
+import javafx.scene.control.PasswordField;
+import javafx.scene.control.TextField;
 import javafx.stage.Stage;
 
 public class LoginScreenController {
@@ -35,11 +38,11 @@ public class LoginScreenController {
     }
 
     private void handleLogin() {
-        String username = usernameField.getText();
+        String username = usernameField.getText().trim();
         String password = passwordField.getText();
 
         if (username.isEmpty() || password.isEmpty()) {
-            showAlert(Alert.AlertType.WARNING, "Validation Error", "Please enter username and password!");
+            showAlert(Alert.AlertType.ERROR, "Login Failed", "Please enter both username and password.");
             return;
         }
 
@@ -47,9 +50,12 @@ public class LoginScreenController {
             User user = userService.authenticateUser(username, password);
 
             if (user != null) {
+                showAlert(Alert.AlertType.INFORMATION, "Login Successful",
+                        "Welcome, " + user.getFirstName() + "!");
+
                 Stage stage = (Stage) loginButton.getScene().getWindow();
 
-                if (user.isAdmin()) {
+                if ("ADMIN".equals(user.getRole())) {
                     AdminMenu adminMenu = new AdminMenu(stage);
                     adminMenu.show();
                 } else {
@@ -57,10 +63,12 @@ public class LoginScreenController {
                     customerMenu.show();
                 }
             } else {
-                showAlert(Alert.AlertType.ERROR, "Login Failed", "Invalid username or password!");
+                showAlert(Alert.AlertType.ERROR, "Login Failed",
+                        "Invalid username or password.");
             }
         } catch (Exception ex) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Login error: " + ex.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Error",
+                    "An error occurred during login: " + ex.getMessage());
             ex.printStackTrace();
         }
     }
@@ -71,21 +79,55 @@ public class LoginScreenController {
             RegisterScreen registerScreen = new RegisterScreen(stage);
             registerScreen.show();
         } catch (Exception ex) {
-            showAlert(Alert.AlertType.ERROR, "Error", "Error opening registration: " + ex.getMessage());
+            showAlert(Alert.AlertType.ERROR, "Error",
+                    "Failed to open registration screen: " + ex.getMessage());
             ex.printStackTrace();
         }
     }
 
     private void handleForgotPassword() {
-        showAlert(Alert.AlertType.INFORMATION, "Forgot Password",
-                "Password recovery feature - Coming soon!");
+        javafx.scene.control.TextInputDialog usernameDialog = new javafx.scene.control.TextInputDialog();
+        usernameDialog.setTitle("Forgot Password");
+        usernameDialog.setHeaderText("Password Recovery");
+        usernameDialog.setContentText("Enter your username:");
+
+        usernameDialog.showAndWait().ifPresent(username -> {
+            if (username.trim().isEmpty()) {
+                showAlert(Alert.AlertType.ERROR, "Error", "Username cannot be empty.");
+                return;
+            }
+
+            javafx.scene.control.TextInputDialog answerDialog = new javafx.scene.control.TextInputDialog();
+            answerDialog.setTitle("Forgot Password");
+            answerDialog.setHeaderText("Security Question");
+            answerDialog.setContentText("What was your childhood home's zipcode?");
+
+            answerDialog.showAndWait().ifPresent(answer -> {
+                try {
+                    String password = userService.recoverPassword(username.trim(), answer.trim());
+
+                    if (password != null) {
+                        showAlert(Alert.AlertType.INFORMATION, "Password Recovery",
+                                "Your password is: " + password);
+                    } else {
+                        showAlert(Alert.AlertType.ERROR, "Recovery Failed",
+                                "Invalid username or security answer.");
+                    }
+                } catch (Exception ex) {
+                    showAlert(Alert.AlertType.ERROR, "Error",
+                            "An error occurred: " + ex.getMessage());
+                    ex.printStackTrace();
+                }
+            });
+        });
     }
 
-    private void showAlert(Alert.AlertType type, String title, String message) {
-        Alert alert = new Alert(type);
+    private void showAlert(Alert.AlertType alertType, String title, String message) {
+        Alert alert = new Alert(alertType);
         alert.setTitle(title);
         alert.setHeaderText(null);
         alert.setContentText(message);
         alert.showAndWait();
     }
 }
+

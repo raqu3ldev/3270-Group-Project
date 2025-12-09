@@ -3,11 +3,14 @@ package Database;
 import Model.Flight;
 import java.sql.*;
 import java.time.LocalDate;
+import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FlightDAO {
-
+    /**
+     * Search flights based on criteria
+     */
     public List<Flight> searchFlights(String fromCity, String toCity, LocalDate flightDate) throws SQLException {
         StringBuilder query = new StringBuilder("SELECT * FROM flights WHERE 1=1");
         List<Object> parameters = new ArrayList<>();
@@ -49,7 +52,9 @@ public class FlightDAO {
         }
     }
 
-
+    /**
+     * Get all flights
+     */
     public List<Flight> getAllFlights() throws SQLException {
         String query = "SELECT * FROM flights ORDER BY departure_time";
 
@@ -67,7 +72,7 @@ public class FlightDAO {
         }
     }
 
-
+    //Gets flight by ID
     public Flight getFlightById(int flightId) throws SQLException {
         String query = "SELECT * FROM flights WHERE flight_id = ?";
 
@@ -85,7 +90,7 @@ public class FlightDAO {
         }
     }
 
-
+    //Adds Flight
     public boolean addFlight(Flight flight) throws SQLException {
         String query = "INSERT INTO flights (flight_number, from_city, to_city, " +
                 "departure_time, arrival_time, total_seats, available_seats, price) " +
@@ -99,7 +104,7 @@ public class FlightDAO {
             stmt.setString(3, flight.getToCity());
             stmt.setTimestamp(4, Timestamp.valueOf(flight.getDepartureTime()));
             stmt.setTimestamp(5, Timestamp.valueOf(flight.getArrivalTime()));
-            stmt.setInt(6, flight.getCapacity());
+            stmt.setInt(6, flight.getTotalSeats());
             stmt.setInt(7, flight.getAvailableSeats());
             stmt.setDouble(8, flight.getPrice());
 
@@ -108,7 +113,7 @@ public class FlightDAO {
         }
     }
 
-
+    //UpdateFlight
     public boolean updateFlight(Flight flight) throws SQLException {
         String query = "UPDATE flights SET flight_number = ?, from_city = ?, to_city = ?, " +
                 "departure_time = ?, arrival_time = ?, total_seats = ?, " +
@@ -122,7 +127,7 @@ public class FlightDAO {
             stmt.setString(3, flight.getToCity());
             stmt.setTimestamp(4, Timestamp.valueOf(flight.getDepartureTime()));
             stmt.setTimestamp(5, Timestamp.valueOf(flight.getArrivalTime()));
-            stmt.setInt(6, flight.getCapacity());
+            stmt.setInt(6, flight.getTotalSeats());
             stmt.setInt(7, flight.getAvailableSeats());
             stmt.setDouble(8, flight.getPrice());
             stmt.setInt(9, flight.getFlightId());
@@ -147,7 +152,7 @@ public class FlightDAO {
     }
 
     //Decrements available seating
-    public void decrementAvailableSeats(int flightId) throws SQLException {
+    public boolean decrementAvailableSeats(int flightId) throws SQLException {
         String query = "UPDATE flights SET available_seats = available_seats - 1 " +
                 "WHERE flight_id = ? AND available_seats > 0";
 
@@ -157,11 +162,12 @@ public class FlightDAO {
             stmt.setInt(1, flightId);
 
             int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
         }
     }
 
     //Increments Available Seats
-    public void incrementAvailableSeats(int flightId) throws SQLException {
+    public boolean incrementAvailableSeats(int flightId) throws SQLException {
         String query = "UPDATE flights SET available_seats = available_seats + 1 " +
                 "WHERE flight_id = ?";
 
@@ -171,6 +177,7 @@ public class FlightDAO {
             stmt.setInt(1, flightId);
 
             int rowsAffected = stmt.executeUpdate();
+            return rowsAffected > 0;
         }
     }
 
@@ -188,9 +195,9 @@ public class FlightDAO {
         flight.setDepartureTime(departure != null ? departure.toLocalDateTime() : null);
         flight.setArrivalTime(arrival != null ? arrival.toLocalDateTime() : null);
 
-        flight.setCapacity(rs.getInt("total_seats"));
+        flight.setTotalSeats(rs.getInt("total_seats"));
         flight.setAvailableSeats(rs.getInt("available_seats"));
-        flight.setBasePrice(rs.getDouble("price"));
+        flight.setPrice(rs.getDouble("price"));
 
         return flight;
     }

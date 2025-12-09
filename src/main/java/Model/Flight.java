@@ -11,8 +11,10 @@ public class Flight {
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
     private int capacity;
-    private int availableSeats;
     private double basePrice;
+    private int totalSeats;
+    private int availableSeats;
+    private double price;
 
     public Flight() {
     }
@@ -29,7 +31,6 @@ public class Flight {
         this.arrivalTime = arrivalTime;
         this.capacity = capacity;
         this.basePrice = basePrice;
-        this.availableSeats = capacity;
     }
 
     public int getFlightId() {
@@ -96,15 +97,33 @@ public class Flight {
         this.basePrice = basePrice;
     }
 
-    public int getAvailableSeats() { return availableSeats; }
+    public int getTotalSeats() {
+        return totalSeats;
+    }
 
-    public void setAvailableSeats(int availableSeats) { this.availableSeats = availableSeats; }
+    public void setTotalSeats(int totalSeats) {
+        this.totalSeats = totalSeats;
+    }
 
-    public double getPrice(){
-        return basePrice; }
+    public int getAvailableSeats() {
+        return availableSeats;
+    }
 
-    public boolean isFull(){
-        return availableSeats <= 0; }
+    public void setAvailableSeats(int availableSeats) {
+        this.availableSeats = availableSeats;
+    }
+
+    public double getPrice() {
+        return price;
+    }
+
+    public void setPrice(double price) {
+        this.price = price;
+    }
+
+    public boolean isFull() {
+        return availableSeats <= 0;
+    }
 
     @Override
     public String toString() {
@@ -116,3 +135,4 @@ public class Flight {
                 '}';
     }
 }
+

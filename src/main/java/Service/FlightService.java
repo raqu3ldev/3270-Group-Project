@@ -6,7 +6,7 @@ import java.time.LocalDate;
 import java.util.List;
 
 
-public class FlightService {
+public class FlightService extends BaseService{
     private FlightDAO flightDAO;
 
     public FlightService() {
@@ -89,3 +89,4 @@ public class FlightService {
         }
     }
 }
+

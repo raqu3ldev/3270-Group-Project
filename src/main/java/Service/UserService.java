@@ -3,7 +3,7 @@ package Service;
 import Database.UserDAO;
 import Model.User;
 
-public class UserService {
+public class UserService extends BaseService implements Authenticable{
     private UserDAO userDAO;
 
     public UserService() {
@@ -44,15 +44,15 @@ public class UserService {
             user.setFirstName(firstName);
             user.setLastName(lastName);
             user.setAddress(address);
-            user.setZipCode(zip);
+            user.setZip(zip);
             user.setState(state);
             user.setUsername(username);
-            user.setPassword(password);
+            user.setPassword(password); // In production, hash this!
             user.setEmail(email);
             user.setSsn(ssn);
             user.setSecurityQuestion(securityQuestion);
             user.setSecurityAnswer(securityAnswer);
-            user.setAdmin(false);
+            user.setAdmin(false); // Default to customer
 
             return userDAO.createUser(user);
         } catch (Exception e) {
@@ -82,6 +82,19 @@ public class UserService {
         } catch (Exception e) {
             e.printStackTrace();
             throw new RuntimeException("Error getting user: " + e.getMessage());
+        }
+    }
+
+    /**
+     * Get all users (Admin only)
+     * @return List of all users in the system
+     */
+    public java.util.List<User> getAllUsers() {
+        try {
+            return userDAO.getAllUsers();
+        } catch (Exception e) {
+            e.printStackTrace();
+            throw new RuntimeException("Error getting all users: " + e.getMessage());
         }
     }
 }
