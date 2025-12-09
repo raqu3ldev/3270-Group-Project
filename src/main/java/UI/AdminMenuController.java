@@ -47,7 +47,14 @@ public class AdminMenuController {
     }
 
     private void openSearchFlights() {
-        System.out.println("Search Flights - Coming soon!");
+        try {
+            Stage stage = (Stage) searchFlightsButton.getScene().getWindow();
+            AdminSearchFlights searchFlights = new AdminSearchFlights(stage);
+            searchFlights.show();
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex.getMessage());
+            ex.printStackTrace();
+        }
     }
 
     private void openViewBookings() {
@@ -62,7 +69,14 @@ public class AdminMenuController {
     }
 
     private void openViewCustomers() {
-        System.out.println("View Customers - Coming soon!");
+        try {
+            Stage stage = (Stage) viewCustomersButton.getScene().getWindow();
+            AdminViewCustomers viewCustomers = new AdminViewCustomers(stage);
+            viewCustomers.show();
+        } catch (IOException ex) {
+            System.out.println("Error: " + ex.getMessage());
+            ex.printStackTrace();
+        }
     }
 
     private void logout() {

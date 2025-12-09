@@ -24,7 +24,7 @@ public class CustomerBookings {
 
         CustomerBookingsController controller = loader.getController();
         controller.setUser(user);
-        controller.setStage(stage);  // THIS WAS MISSING!
+        controller.setStage(stage);
 
         stage.setScene(scene);
         stage.show();
