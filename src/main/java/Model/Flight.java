@@ -3,35 +3,33 @@ package Model;
 import java.time.LocalDateTime;
 
 public class Flight {
+
     private int flightId;
     private String flightNumber;
     private String fromCity;
     private String toCity;
     private LocalDateTime departureTime;
     private LocalDateTime arrivalTime;
-    private int totalSeats;
-    private int availableSeats;
-    private double price;
+    private int capacity;
+    private double basePrice;
 
-    // Default Constructor
-    public Flight() {}
+    public Flight() {
+    }
 
-    // Full Constructor
     public Flight(int flightId, String flightNumber, String fromCity, String toCity,
                   LocalDateTime departureTime, LocalDateTime arrivalTime,
-                  int totalSeats, int availableSeats, double price) {
+                  int capacity, double basePrice) {
+
         this.flightId = flightId;
         this.flightNumber = flightNumber;
         this.fromCity = fromCity;
         this.toCity = toCity;
         this.departureTime = departureTime;
         this.arrivalTime = arrivalTime;
-        this.totalSeats = totalSeats;
-        this.availableSeats = availableSeats;
-        this.price = price;
+        this.capacity = capacity;
+        this.basePrice = basePrice;
     }
 
-    // Getters and Setters
     public int getFlightId() {
         return flightId;
     }
@@ -80,40 +78,29 @@ public class Flight {
         this.arrivalTime = arrivalTime;
     }
 
-    public int getTotalSeats() {
-        return totalSeats;
+    public int getCapacity() {
+        return capacity;
     }
 
-    public void setTotalSeats(int totalSeats) {
-        this.totalSeats = totalSeats;
+    public void setCapacity(int capacity) {
+        this.capacity = capacity;
     }
 
-    public int getAvailableSeats() {
-        return availableSeats;
+    public double getBasePrice() {
+        return basePrice;
     }
 
-    public void setAvailableSeats(int availableSeats) {
-        this.availableSeats = availableSeats;
-    }
-
-    public double getPrice() {
-        return price;
-    }
-
-    public void setPrice(double price) {
-        this.price = price;
-    }
-
-    // Utility method
-    public boolean isFull() {
-        return availableSeats <= 0;
+    public void setBasePrice(double basePrice) {
+        this.basePrice = basePrice;
     }
 
     @Override
     public String toString() {
         return "Flight{" +
-                "flightNumber='" + flightNumber + '\'' + ", from='" + fromCity + '\'' +
-                ", to='" + toCity + '\'' + ", departure=" + departureTime +
-                ", availableSeats=" + availableSeats + '}';
+                "flightId=" + flightId +
+                ", flightNumber='" + flightNumber + '\'' +
+                ", fromCity='" + fromCity + '\'' +
+                ", toCity='" + toCity + '\'' +
+                '}';
     }
 }

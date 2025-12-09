@@ -1,7 +1,7 @@
 package Service;
 
-import Model.User;
 import Database.UserDAO;
+import Model.User;
 
 public class UserService {
     private UserDAO userDAO;
