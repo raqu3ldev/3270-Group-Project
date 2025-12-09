@@ -1,54 +1,62 @@
 package Model;
 
-public class User {private int userId;
+public class User {
+
+    private int userId;
     private String firstName;
     private String lastName;
     private String address;
-    private String zip;
+    private String city;
     private String state;
+    private String zipCode;
+    private String email;
     private String username;
     private String password;
-    private String email;
     private String ssn;
     private String securityQuestion;
     private String securityAnswer;
-    private boolean isAdmin;
+    private String role; // "ADMIN" or "CUSTOMER"
 
-    // Default Constructor
-    public User() {}
-
-    // Constructor for basic user info
-    public User(int userId, String firstName, String lastName, String username,
-                String email, boolean isAdmin) {
-        this.userId = userId;
-        this.firstName = firstName;
-        this.lastName = lastName;
-        this.username = username;
-        this.email = email;
-        this.isAdmin = isAdmin;
+    // No-arg constructor (needed for some frameworks / easy creation)
+    public User() {
     }
 
-    // Full Constructor for registration
-    public User(int userId, String firstName, String lastName, String address,
-                String zip, String state, String username, String password,
-                String email, String ssn, String securityQuestion,
-                String securityAnswer, boolean isAdmin) {
+    // Full constructor with all fields
+    public User(int userId, String firstName, String lastName,
+                String address, String city, String state, String zipCode,
+                String email, String username, String password,
+                String ssn, String securityQuestion, String securityAnswer,
+                String role) {
+
         this.userId = userId;
         this.firstName = firstName;
         this.lastName = lastName;
         this.address = address;
-        this.zip = zip;
+        this.city = city;
         this.state = state;
+        this.zipCode = zipCode;
+        this.email = email;
         this.username = username;
         this.password = password;
-        this.email = email;
         this.ssn = ssn;
         this.securityQuestion = securityQuestion;
         this.securityAnswer = securityAnswer;
-        this.isAdmin = isAdmin;
+        this.role = role;
     }
 
-    // Getters and Setters
+    // A smaller constructor you might use just after login
+    public User(int userId, String firstName, String lastName,
+                String username, String role) {
+
+        this.userId = userId;
+        this.firstName = firstName;
+        this.lastName = lastName;
+        this.username = username;
+        this.role = role;
+    }
+
+    // Getters and setters
+
     public int getUserId() {
         return userId;
     }
@@ -81,12 +89,12 @@ public class User {private int userId;
         this.address = address;
     }
 
-    public String getZip() {
-        return zip;
+    public String getCity() {
+        return city;
     }
 
-    public void setZip(String zip) {
-        this.zip = zip;
+    public void setCity(String city) {
+        this.city = city;
     }
 
     public String getState() {
@@ -95,6 +103,22 @@ public class User {private int userId;
 
     public void setState(String state) {
         this.state = state;
+    }
+
+    public String getZipCode() {
+        return zipCode;
+    }
+
+    public void setZipCode(String zipCode) {
+        this.zipCode = zipCode;
+    }
+
+    public String getEmail() {
+        return email;
+    }
+
+    public void setEmail(String email) {
+        this.email = email;
     }
 
     public String getUsername() {
@@ -111,14 +135,6 @@ public class User {private int userId;
 
     public void setPassword(String password) {
         this.password = password;
-    }
-
-    public String getEmail() {
-        return email;
-    }
-
-    public void setEmail(String email) {
-        this.email = email;
     }
 
     public String getSsn() {
@@ -145,24 +161,20 @@ public class User {private int userId;
         this.securityAnswer = securityAnswer;
     }
 
-    public boolean isAdmin() {
-        return isAdmin;
+    public String getRole() {
+        return role;
     }
 
-    public void setAdmin(boolean admin) {
-        isAdmin = admin;
-    }
-
-    //Get full name method
-    public String getFullName() {
-        return firstName + " " + lastName;
+    public void setRole(String role) {
+        this.role = role;
     }
 
     @Override
     public String toString() {
-        return "User{" + "userId=" + userId + ", username='" + username + '\'' +
-                ", firstName='" + firstName + '\'' + ", lastName='" + lastName + '\'' +
-                ", email='" + email + '\'' + ", isAdmin=" + isAdmin + '}';
+        return "User{" +
+                "userId=" + userId +
+                ", username='" + username + '\'' +
+                ", role='" + role + '\'' +
+                '}';
     }
 }
-

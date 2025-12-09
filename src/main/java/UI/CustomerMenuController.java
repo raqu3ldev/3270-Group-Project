@@ -1,8 +1,8 @@
 package UI;
 
-import Model.User;
 import Model.Flight;
 import Model.Booking;
+import Model.User;
 import Service.FlightService;
 import Service.BookingService;
 import javafx.fxml.FXML;
