@@ -18,19 +18,22 @@ public class CustomerBookingsController {
     private TableView<Booking> bookingsTable;
 
     @FXML
-    private TableColumn<Booking, Integer> bookingNumCol;
+    private TableColumn<Booking, String> flightNumberCol;
 
     @FXML
-    private TableColumn<Booking, String> originCol;
+    private TableColumn<Booking, String> fromCityCol;
 
     @FXML
-    private TableColumn<Booking, String> destinationCol;
+    private TableColumn<Booking, String> toCityCol;
 
     @FXML
-    private TableColumn<Booking, String> dateCol;
+    private TableColumn<Booking, String> departureTimeCol;
 
     @FXML
-    private TableColumn<Booking, String> bookingDateCol;
+    private TableColumn<Booking, String> arrivalTimeCol;
+
+    @FXML
+    private TableColumn<Booking, String> statusCol;
 
     @FXML
     private Button backButton;
@@ -75,11 +78,12 @@ public class CustomerBookingsController {
     }
 
     private void setupTable() {
-        bookingNumCol.setCellValueFactory(new PropertyValueFactory<>("bookingId"));
-        originCol.setCellValueFactory(new PropertyValueFactory<>("fromCity"));
-        destinationCol.setCellValueFactory(new PropertyValueFactory<>("toCity"));
-        dateCol.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
-        bookingDateCol.setCellValueFactory(new PropertyValueFactory<>("bookingDate"));
+        flightNumberCol.setCellValueFactory(new PropertyValueFactory<>("flightNumber"));
+        fromCityCol.setCellValueFactory(new PropertyValueFactory<>("fromCity"));
+        toCityCol.setCellValueFactory(new PropertyValueFactory<>("toCity"));
+        departureTimeCol.setCellValueFactory(new PropertyValueFactory<>("departureTime"));
+        arrivalTimeCol.setCellValueFactory(new PropertyValueFactory<>("arrivalTime"));
+        statusCol.setCellValueFactory(new PropertyValueFactory<>("bookingDate"));
 
         bookingsTable.setItems(bookingsList);
     }
@@ -101,8 +105,7 @@ public class CustomerBookingsController {
         Alert confirm = new Alert(Alert.AlertType.CONFIRMATION);
         confirm.setTitle("Confirm Cancellation");
         confirm.setHeaderText("Cancel Booking");
-        confirm.setContentText("Are you sure you want to cancel booking #" +
-                selected.getBookingId() + "?");
+        confirm.setContentText("Are you sure you want to cancel this booking?");
 
         if (confirm.showAndWait().get() == ButtonType.OK) {
             try {
@@ -111,7 +114,7 @@ public class CustomerBookingsController {
                 if (success) {
                     showAlert(Alert.AlertType.INFORMATION, "Success",
                             "Booking cancelled successfully!");
-                    bookingsList.remove(selected);
+                    loadBookings();
                 } else {
                     showAlert(Alert.AlertType.ERROR, "Error",
                             "Failed to cancel booking.");

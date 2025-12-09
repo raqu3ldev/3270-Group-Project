@@ -5,7 +5,7 @@
 <?import javafx.scene.text.*?>
 
 <VBox maxHeight="-Infinity" maxWidth="-Infinity" minHeight="-Infinity" minWidth="-Infinity"
-      prefHeight="463.0" prefWidth="728.0"
+      prefHeight="463.0" prefWidth="800.0"
       xmlns="http://javafx.com/javafx/17.0.12"
       xmlns:fx="http://javafx.com/fxml/1"
       fx:controller="UI.CustomerBookingsController">
@@ -15,20 +15,20 @@
                 <Font size="18.0" />
             </font>
         </Label>
-        <TableView fx:id="bookingsTable" prefHeight="200.0" prefWidth="200.0">
+        <TableView fx:id="bookingsTable" prefHeight="350.0" prefWidth="780.0">
             <columns>
-                <TableColumn fx:id="bookingNumCol" prefWidth="136.0" text="Booking #" />
-                <TableColumn fx:id="originCol" prefWidth="142.0" text="Origin" />
-                <TableColumn fx:id="destinationCol" prefWidth="142.0" text="Destination" />
-                <TableColumn fx:id="dateCol" prefWidth="141.0" text="Date" />
-                <TableColumn fx:id="bookingDateCol" prefWidth="165.0" text="Booking Date" />
+                <TableColumn fx:id="flightNumberCol" prefWidth="80.0" text="Flight #" />
+                <TableColumn fx:id="fromCityCol" prefWidth="120.0" text="From" />
+                <TableColumn fx:id="toCityCol" prefWidth="120.0" text="To" />
+                <TableColumn fx:id="departureTimeCol" prefWidth="150.0" text="Departure" />
+                <TableColumn fx:id="arrivalTimeCol" prefWidth="150.0" text="Arrival" />
+                <TableColumn fx:id="statusCol" prefWidth="160.0" text="Status" />
             </columns>
         </TableView>
-        <HBox prefHeight="100.0" prefWidth="200.0">
+        <HBox prefHeight="60.0" prefWidth="200.0" spacing="10.0" alignment="CENTER">
             <children>
-                <Button fx:id="backButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="143.0" text="Back to Menu" />
-                <HBox prefHeight="113.0" prefWidth="484.0" />
-                <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Cancel Booking" />
+                <Button fx:id="backButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="120.0" text="Back to Menu" />
+                <Button fx:id="cancelButton" mnemonicParsing="false" prefHeight="26.0" prefWidth="150.0" text="Cancel Booking" />
             </children>
         </HBox>
     </children>

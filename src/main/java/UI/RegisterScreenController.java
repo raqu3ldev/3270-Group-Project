@@ -66,7 +66,6 @@ public class RegisterScreenController {
             return;
         }
 
-        // Validate password length
         if (password.length() < 6) {
             showAlert(Alert.AlertType.WARNING, "Validation Error",
                     "Password must be at least 6 characters long!");
