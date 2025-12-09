@@ -19,11 +19,12 @@ public class CustomerMenu {
     public void show() throws IOException {
         stage.setTitle("Customer Menu - " + user.getFirstName() + " " + user.getLastName());
 
-        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/customerMenu.fxml"));
+        FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/CustomerMenu.fxml"));
         Scene scene = new Scene(loader.load(), 600, 400);
 
         CustomerMenuController controller = loader.getController();
         controller.setUser(user);
+        controller.setStage(stage);
 
         stage.setScene(scene);
         stage.show();

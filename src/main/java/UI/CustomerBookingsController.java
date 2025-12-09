@@ -38,7 +38,8 @@ public class CustomerBookingsController {
     @FXML
     private Button cancelButton;
 
-    private User user;  // Add this
+    private User user;
+    private Stage stage;
     private BookingService bookingService;
     private ObservableList<Booking> bookingsList;
 
@@ -51,13 +52,15 @@ public class CustomerBookingsController {
         setupButtons();
     }
 
-    // Add this method
     public void setUser(User user) {
         this.user = user;
-        loadBookings();  // Load bookings once we have the user
+        loadBookings();
     }
 
-    // Add this method
+    public void setStage(Stage stage) {
+        this.stage = stage;
+    }
+
     private void loadBookings() {
         if (user != null) {
             try {
@@ -122,7 +125,6 @@ public class CustomerBookingsController {
 
     private void goBack() {
         try {
-            Stage stage = (Stage) backButton.getScene().getWindow();
             CustomerMenu customerMenu = new CustomerMenu(stage, user);
             customerMenu.show();
         } catch (IOException ex) {

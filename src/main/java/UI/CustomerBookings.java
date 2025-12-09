@@ -23,7 +23,8 @@ public class CustomerBookings {
         Scene scene = new Scene(loader.load(), 728, 463);
 
         CustomerBookingsController controller = loader.getController();
-        controller.setUser(user);  // Pass user to controller
+        controller.setUser(user);
+        controller.setStage(stage);  // THIS WAS MISSING!
 
         stage.setScene(scene);
         stage.show();
