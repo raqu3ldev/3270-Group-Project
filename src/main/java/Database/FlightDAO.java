@@ -3,14 +3,11 @@ package Database;
 import Model.Flight;
 import java.sql.*;
 import java.time.LocalDate;
-import java.time.LocalDateTime;
 import java.util.ArrayList;
 import java.util.List;
 
 public class FlightDAO {
-    /**
-     * Search flights based on criteria
-     */
+
     public List<Flight> searchFlights(String fromCity, String toCity, LocalDate flightDate) throws SQLException {
         StringBuilder query = new StringBuilder("SELECT * FROM flights WHERE 1=1");
         List<Object> parameters = new ArrayList<>();
@@ -52,9 +49,7 @@ public class FlightDAO {
         }
     }
 
-    /**
-     * Get all flights
-     */
+
     public List<Flight> getAllFlights() throws SQLException {
         String query = "SELECT * FROM flights ORDER BY departure_time";
 
@@ -72,7 +67,7 @@ public class FlightDAO {
         }
     }
 
-    //Gets flight by ID
+
     public Flight getFlightById(int flightId) throws SQLException {
         String query = "SELECT * FROM flights WHERE flight_id = ?";
 
@@ -90,7 +85,7 @@ public class FlightDAO {
         }
     }
 
-    //Adds Flight
+
     public boolean addFlight(Flight flight) throws SQLException {
         String query = "INSERT INTO flights (flight_number, from_city, to_city, " +
                 "departure_time, arrival_time, total_seats, available_seats, price) " +
@@ -113,7 +108,7 @@ public class FlightDAO {
         }
     }
 
-    //UpdateFlight
+
     public boolean updateFlight(Flight flight) throws SQLException {
         String query = "UPDATE flights SET flight_number = ?, from_city = ?, to_city = ?, " +
                 "departure_time = ?, arrival_time = ?, total_seats = ?, " +
@@ -152,7 +147,7 @@ public class FlightDAO {
     }
 
     //Decrements available seating
-    public boolean decrementAvailableSeats(int flightId) throws SQLException {
+    public void decrementAvailableSeats(int flightId) throws SQLException {
         String query = "UPDATE flights SET available_seats = available_seats - 1 " +
                 "WHERE flight_id = ? AND available_seats > 0";
 
@@ -162,12 +157,11 @@ public class FlightDAO {
             stmt.setInt(1, flightId);
 
             int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
         }
     }
 
     //Increments Available Seats
-    public boolean incrementAvailableSeats(int flightId) throws SQLException {
+    public void incrementAvailableSeats(int flightId) throws SQLException {
         String query = "UPDATE flights SET available_seats = available_seats + 1 " +
                 "WHERE flight_id = ?";
 
@@ -177,7 +171,6 @@ public class FlightDAO {
             stmt.setInt(1, flightId);
 
             int rowsAffected = stmt.executeUpdate();
-            return rowsAffected > 0;
         }
     }
 
