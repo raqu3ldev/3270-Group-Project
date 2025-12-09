@@ -7,6 +7,7 @@ import javafx.stage.Stage;
 import java.io.IOException;
 
 public class CustomerMenu {
+
     private Stage stage;
     private User user;
 
@@ -19,18 +20,12 @@ public class CustomerMenu {
         stage.setTitle("Customer Menu - " + user.getFirstName() + " " + user.getLastName());
 
         FXMLLoader loader = new FXMLLoader(getClass().getResource("/UI/customerMenu.fxml"));
+        Scene scene = new Scene(loader.load(), 600, 400);
 
-        // Load the FXML
-        Scene scene = new Scene(loader.load(), 800, 600);
-
-        // Pass the user to the controller
         CustomerMenuController controller = loader.getController();
         controller.setUser(user);
-        controller.setStage(stage);
 
         stage.setScene(scene);
         stage.show();
     }
 }
-
-

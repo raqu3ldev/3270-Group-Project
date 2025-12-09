@@ -9,6 +9,7 @@ import javafx.stage.Stage;
 import javafx.collections.FXCollections;
 import javafx.collections.ObservableList;
 import java.util.List;
+import java.io.IOException;
 
 public class AdminBookingsController {
 
@@ -83,8 +84,9 @@ public class AdminBookingsController {
             Stage stage = (Stage) backButton.getScene().getWindow();
             AdminMenu adminMenu = new AdminMenu(stage);
             adminMenu.show();
-        } catch (Exception ex) {
+        } catch (IOException ex) {
             showError("Error going back: " + ex.getMessage());
+            ex.printStackTrace();
         }
     }
 
